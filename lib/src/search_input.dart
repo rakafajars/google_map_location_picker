@@ -100,50 +100,5 @@ class SearchInputState extends State<SearchInput> {
         },
       ),
     );
-
-    // Container(
-    //   decoration: widget.boxDecoration ??
-    //       BoxDecoration(
-    //         borderRadius: BorderRadius.circular(10),
-    //         color: Theme.of(context).brightness == Brightness.dark
-    //             ? Colors.black54
-    //             : Colors.white,
-    //       ),
-    //   padding: EdgeInsets.symmetric(horizontal: 8),
-    //   child: Row(
-    //     children: <Widget>[
-    //       Icon(Icons.search),
-    //       SizedBox(width: 8),
-    //       Expanded(
-    //         child: TextField(
-    //           controller: editController,
-    //           decoration: InputDecoration(
-    //             hintText: widget.hintText ??
-    //                 S.of(context)?.search_place ??
-    //                 'Cari Apotek',
-    //             border: InputBorder.none,
-    //           ),
-    //           onChanged: (value) {
-    //             setState(() {
-    //               hasSearchEntry = value.isNotEmpty;
-    //             });
-    //           },
-    //         ),
-    //       ),
-    //       SizedBox(width: 8),
-    //       hasSearchEntry
-    //           ? GestureDetector(
-    //               child: Icon(Icons.clear),
-    //               onTap: () {
-    //                 editController.clear();
-    //                 setState(() {
-    //                   hasSearchEntry = false;
-    //                 });
-    //               },
-    //             )
-    //           : SizedBox(),
-    //     ],
-    //   ),
-    // );
   }
 }

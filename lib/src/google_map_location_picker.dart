@@ -391,97 +391,109 @@ class LocationPickerState extends State<LocationPicker> {
       providers: [
         ChangeNotifierProvider(create: (_) => LocationProvider()),
       ],
-      child: Builder(builder: (context) {
-        return Scaffold(
-          extendBodyBehindAppBar: true,
-          // appBar: AppBar(
-          //   iconTheme: Theme.of(context).iconTheme,
-          //   elevation: 0,
-          //   backgroundColor: widget.appBarColor,
-          //   key: appBarKey,
-          //   title: SearchInput(
-          //     (input) => searchPlace(input),
-          //     key: searchInputKey,
-          //     boxDecoration: widget.searchBarBoxDecoration,
-          //     hintText: widget.hintText,
-          //     hintStyle: widget.hintStyle,
-          //   ),
-          // ),
-          body: Stack(
-            children: [
-              MapPicker(
-                widget.apiKey,
-                initialCenter: widget.initialCenter,
-                initialZoom: widget.initialZoom,
-                requiredGPS: widget.requiredGPS,
-                myLocationButtonEnabled: widget.myLocationButtonEnabled,
-                layersButtonEnabled: widget.layersButtonEnabled,
-                automaticallyAnimateToCurrentLocation:
-                    widget.automaticallyAnimateToCurrentLocation,
-                mapStylePath: widget.mapStylePath,
-                appBarColor: widget.appBarColor,
-                searchBarBoxDecoration: widget.searchBarBoxDecoration,
-                hintText: widget.hintText,
-                resultCardConfirmIcon: widget.resultCardConfirmIcon,
-                resultCardAlignment: widget.resultCardAlignment,
-                resultCardDecoration: widget.resultCardDecoration,
-                resultCardPadding: widget.resultCardPadding,
-                key: mapKey,
-                language: widget.language,
-                desiredAccuracy: widget.desiredAccuracy,
-                svgPicture: widget.svgPicture,
-                hintStyle: widget.hintStyle,
-              ),
-              SafeArea(
-                child: Column(
-                  children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            left: 24,
-                            right: 10.0,
-                            bottom: 10.0,
+      child: Builder(
+        builder: (context) {
+          return Scaffold(
+            body: Stack(
+              children: [
+                MapPicker(
+                  widget.apiKey,
+                  initialCenter: widget.initialCenter,
+                  initialZoom: widget.initialZoom,
+                  requiredGPS: widget.requiredGPS,
+                  myLocationButtonEnabled: widget.myLocationButtonEnabled,
+                  layersButtonEnabled: widget.layersButtonEnabled,
+                  automaticallyAnimateToCurrentLocation:
+                      widget.automaticallyAnimateToCurrentLocation,
+                  mapStylePath: widget.mapStylePath,
+                  appBarColor: widget.appBarColor,
+                  searchBarBoxDecoration: widget.searchBarBoxDecoration,
+                  hintText: widget.hintText,
+                  resultCardConfirmIcon: widget.resultCardConfirmIcon,
+                  resultCardAlignment: widget.resultCardAlignment,
+                  resultCardDecoration: widget.resultCardDecoration,
+                  resultCardPadding: widget.resultCardPadding,
+                  key: mapKey,
+                  language: widget.language,
+                  desiredAccuracy: widget.desiredAccuracy,
+                  svgPicture: widget.svgPicture,
+                  hintStyle: widget.hintStyle,
+                ),
+                SafeArea(
+                  child: Column(
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              left: 24,
+                              right: 10.0,
+                              bottom: 10.0,
+                            ),
+                            child: ClipOval(
+                              child: Material(
+                                color: Colors.white,
+                                child: GestureDetector(
+                                  child: SizedBox(
+                                    width: 36,
+                                    height: 36,
+                                    child: Icon(
+                                      Icons.arrow_back,
+                                    ),
+                                  ),
+                                  onTap: () {
+                                    Navigator.pop(
+                                      context,
+                                    );
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: SearchInput(
+                              (input) => searchPlace(input),
+                              key: searchInputKey,
+                              boxDecoration: widget.searchBarBoxDecoration,
+                              hintText: widget.hintText,
+                              hintStyle: widget.hintStyle,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: Container(
+                          margin: EdgeInsets.only(
+                            top: 24,
+                            right: 24,
                           ),
                           child: ClipOval(
                             child: Material(
                               color: Colors.white,
-                              child: GestureDetector(
-                                child: SizedBox(
-                                  width: 36,
-                                  height: 36,
-                                  child: Icon(
-                                    Icons.arrow_back,
-                                  ),
+                              child: SizedBox(
+                                width: 36,
+                                height: 36,
+                                child: IconButton(
+                                  icon: widget.svgPicture,
+                                  onPressed: () {
+                                    print('Raka');
+                                  },
                                 ),
-                                onTap: () {
-                                  Navigator.pop(
-                                    context,
-                                  );
-                                },
                               ),
                             ),
                           ),
                         ),
-                        Expanded(
-                          child: SearchInput(
-                            (input) => searchPlace(input),
-                            key: searchInputKey,
-                            boxDecoration: widget.searchBarBoxDecoration,
-                            hintText: widget.hintText,
-                            hintStyle: widget.hintStyle,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ),
-        );
-      }),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }
