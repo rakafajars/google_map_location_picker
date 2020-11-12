@@ -40,6 +40,7 @@ class MapPicker extends StatefulWidget {
     this.language,
     this.desiredAccuracy,
     this.svgPicture,
+    this.hintStyle,
   }) : super(key: key);
 
   final String apiKey;
@@ -62,6 +63,7 @@ class MapPicker extends StatefulWidget {
   final Decoration resultCardDecoration;
   final EdgeInsets resultCardPadding;
   final Widget svgPicture;
+  final TextStyle hintStyle;
 
   final String language;
 

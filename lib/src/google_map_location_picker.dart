@@ -428,6 +428,7 @@ class LocationPickerState extends State<LocationPicker> {
             language: widget.language,
             desiredAccuracy: widget.desiredAccuracy,
             svgPicture: widget.svgPicture,
+            hintStyle: widget.hintStyle,
           ),
         );
       }),
@@ -466,6 +467,7 @@ Future<LocationResult> showLocationPicker(
   String language = 'en',
   LocationAccuracy desiredAccuracy = LocationAccuracy.best,
   Widget svgPicture,
+  TextStyle hintStyle,
 }) async {
   final results = await Navigator.of(context).push(
     MaterialPageRoute<dynamic>(
@@ -492,6 +494,7 @@ Future<LocationResult> showLocationPicker(
           language: language,
           desiredAccuracy: desiredAccuracy,
           svgPicture: svgPicture,
+          hintStyle: hintStyle,
         );
       },
     ),
