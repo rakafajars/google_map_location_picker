@@ -69,8 +69,6 @@ class SearchInputState extends State<SearchInput> {
       margin: EdgeInsets.only(
         right: 24,
       ),
-      width: _mediaQueryData.size.height / 100 * 100,
-      height: 36,
       decoration: new BoxDecoration(
         color: Theme.of(context).brightness == Brightness.dark
             ? Colors.black54
