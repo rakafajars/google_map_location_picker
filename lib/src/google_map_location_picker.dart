@@ -464,12 +464,14 @@ class LocationPickerState extends State<LocationPicker> {
                             ),
                           ),
                         ),
-                        SearchInput(
-                          (input) => searchPlace(input),
-                          key: searchInputKey,
-                          boxDecoration: widget.searchBarBoxDecoration,
-                          hintText: widget.hintText,
-                          hintStyle: widget.hintStyle,
+                        Expanded(
+                          child: SearchInput(
+                            (input) => searchPlace(input),
+                            key: searchInputKey,
+                            boxDecoration: widget.searchBarBoxDecoration,
+                            hintText: widget.hintText,
+                            hintStyle: widget.hintStyle,
+                          ),
                         ),
                       ],
                     ),
