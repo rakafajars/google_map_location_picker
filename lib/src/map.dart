@@ -472,7 +472,10 @@ class _MapFabs extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.topRight,
-      margin: const EdgeInsets.only(top: kToolbarHeight + 24, right: 8),
+      margin: const EdgeInsets.only(
+        top: 24,
+        right: 24,
+      ),
       child: Column(
         children: <Widget>[
           if (layersButtonEnabled)
@@ -484,13 +487,6 @@ class _MapFabs extends StatelessWidget {
               heroTag: "layers",
             ),
           if (myLocationButtonEnabled)
-            // FloatingActionButton(
-            //   onPressed: onMyLocationPressed,
-            //   materialTapTargetSize: MaterialTapTargetSize.padded,
-            //   mini: true,
-            //   child: const Icon(Icons.my_location),
-            //   heroTag: "myLocation",
-            // ),
             ClipOval(
               child: Material(
                 color: Colors.white,

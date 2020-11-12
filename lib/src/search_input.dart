@@ -11,12 +11,14 @@ class SearchInput extends StatefulWidget {
     this.searchInputKey,
     this.boxDecoration,
     this.hintText,
+    this.hintStyle,
   }) : super(key: key);
 
   final ValueChanged<String> onSearchInput;
   final Key searchInputKey;
   final BoxDecoration boxDecoration;
   final String hintText;
+  final TextStyle hintStyle;
 
   @override
   State<StatefulWidget> createState() => SearchInputState();
@@ -24,6 +26,8 @@ class SearchInput extends StatefulWidget {
 
 class SearchInputState extends State<SearchInput> {
   TextEditingController editController = TextEditingController();
+
+  static MediaQueryData _mediaQueryData;
 
   Timer debouncer;
 
@@ -62,48 +66,86 @@ class SearchInputState extends State<SearchInput> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: widget.boxDecoration ??
-          BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
-            color: Theme.of(context).brightness == Brightness.dark
-                ? Colors.black54
-                : Colors.white,
+      margin: EdgeInsets.only(
+        right: 24,
+      ),
+      width: _mediaQueryData.size.height / 100 * 100,
+      height: 36,
+      decoration: new BoxDecoration(
+        color: Theme.of(context).brightness == Brightness.dark
+            ? Colors.black54
+            : Colors.white,
+        borderRadius: new BorderRadius.all(
+          new Radius.circular(
+            10.0,
           ),
-      padding: EdgeInsets.symmetric(horizontal: 8),
-      child: Row(
-        children: <Widget>[
-          Icon(Icons.search),
-          SizedBox(width: 8),
-          Expanded(
-            child: TextField(
-              controller: editController,
-              decoration: InputDecoration(
-                hintText: widget.hintText ??
-                    S.of(context)?.search_place ??
-                    'Search place',
-                border: InputBorder.none,
-              ),
-              onChanged: (value) {
-                setState(() {
-                  hasSearchEntry = value.isNotEmpty;
-                });
-              },
-            ),
+        ),
+      ),
+      child: TextField(
+        controller: editController,
+        keyboardType: TextInputType.text,
+        decoration: InputDecoration(
+          hintText:
+              widget.hintText ?? S.of(context)?.search_place ?? 'Cari Apotek',
+          border: InputBorder.none,
+          hintStyle: widget.hintStyle,
+          prefixIcon: Icon(
+            Icons.search,
+            color: Color(0xFFB8BCC6),
+            size: 20,
           ),
-          SizedBox(width: 8),
-          hasSearchEntry
-              ? GestureDetector(
-                  child: Icon(Icons.clear),
-                  onTap: () {
-                    editController.clear();
-                    setState(() {
-                      hasSearchEntry = false;
-                    });
-                  },
-                )
-              : SizedBox(),
-        ],
+        ),
+        onChanged: (value) {
+          setState(() {
+            hasSearchEntry = value.isNotEmpty;
+          });
+        },
       ),
     );
+
+    // Container(
+    //   decoration: widget.boxDecoration ??
+    //       BoxDecoration(
+    //         borderRadius: BorderRadius.circular(10),
+    //         color: Theme.of(context).brightness == Brightness.dark
+    //             ? Colors.black54
+    //             : Colors.white,
+    //       ),
+    //   padding: EdgeInsets.symmetric(horizontal: 8),
+    //   child: Row(
+    //     children: <Widget>[
+    //       Icon(Icons.search),
+    //       SizedBox(width: 8),
+    //       Expanded(
+    //         child: TextField(
+    //           controller: editController,
+    //           decoration: InputDecoration(
+    //             hintText: widget.hintText ??
+    //                 S.of(context)?.search_place ??
+    //                 'Cari Apotek',
+    //             border: InputBorder.none,
+    //           ),
+    //           onChanged: (value) {
+    //             setState(() {
+    //               hasSearchEntry = value.isNotEmpty;
+    //             });
+    //           },
+    //         ),
+    //       ),
+    //       SizedBox(width: 8),
+    //       hasSearchEntry
+    //           ? GestureDetector(
+    //               child: Icon(Icons.clear),
+    //               onTap: () {
+    //                 editController.clear();
+    //                 setState(() {
+    //                   hasSearchEntry = false;
+    //                 });
+    //               },
+    //             )
+    //           : SizedBox(),
+    //     ],
+    //   ),
+    // );
   }
 }
