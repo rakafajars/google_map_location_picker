@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_map_location_picker/generated/l10n.dart';
 import 'package:google_map_location_picker/src/providers/location_provider.dart';
@@ -299,13 +300,13 @@ class MapPickerState extends State<MapPicker> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Icon(Icons.place, size: 56),
+            Icon(Icons.place),
             Container(
               decoration: ShapeDecoration(
                 shadows: [
                   BoxShadow(
                     blurRadius: 4,
-                    color: Colors.black38,
+                    color: Colors.red,
                   ),
                 ],
                 shape: CircleBorder(
@@ -462,6 +463,7 @@ class _MapFabs extends StatelessWidget {
 
   final VoidCallback onToggleMapTypePressed;
   final VoidCallback onMyLocationPressed;
+  final String svgPicture;
 
   @override
   Widget build(BuildContext context) {
@@ -479,12 +481,28 @@ class _MapFabs extends StatelessWidget {
               heroTag: "layers",
             ),
           if (myLocationButtonEnabled)
-            FloatingActionButton(
-              onPressed: onMyLocationPressed,
-              materialTapTargetSize: MaterialTapTargetSize.padded,
-              mini: true,
-              child: const Icon(Icons.my_location),
-              heroTag: "myLocation",
+            // FloatingActionButton(
+            //   onPressed: onMyLocationPressed,
+            //   materialTapTargetSize: MaterialTapTargetSize.padded,
+            //   mini: true,
+            //   child: const Icon(Icons.my_location),
+            //   heroTag: "myLocation",
+            // ),
+            ClipOval(
+              child: Material(
+                color: Colors.white,
+                child: SizedBox(
+                  width: 36,
+                  height: 36,
+                  child: IconButton(
+                    icon: SvgPicture.asset(
+                      svgPicture,
+                      color: Color(0xFFFF5E20),
+                    ),
+                    onPressed: onMyLocationPressed,
+                  ),
+                ),
+              ),
             ),
         ],
       ),
