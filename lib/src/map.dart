@@ -259,7 +259,9 @@ class MapPickerState extends State<MapPicker> {
                       });
                     },
                     child: widget.resultCardConfirmIcon ??
-                        Icon(Icons.arrow_forward),
+                        Icon(
+                          Icons.ac_unit,
+                        ),
                   ),
                 ],
               ),
