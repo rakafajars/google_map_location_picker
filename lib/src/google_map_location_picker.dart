@@ -128,7 +128,14 @@ class LocationPickerState extends State<LocationPicker> {
         child: Material(
           elevation: 1,
           child: Container(
-            padding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+            padding: EdgeInsets.symmetric(
+              vertical: 16,
+              horizontal: 24,
+            ),
+            margin: EdgeInsets.only(
+              left: 24,
+              right: 24,
+            ),
             child: Row(
               children: <Widget>[
                 SizedBox(
@@ -139,7 +146,7 @@ class LocationPickerState extends State<LocationPicker> {
                 SizedBox(width: 24),
                 Expanded(
                   child: Text(
-                    S.of(context)?.finding_place ?? 'Finding place...',
+                    S.of(context)?.finding_place ?? 'Mencari alamat...',
                     style: TextStyle(fontSize: 16),
                   ),
                 )
