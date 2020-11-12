@@ -39,6 +39,7 @@ class MapPicker extends StatefulWidget {
     this.resultCardPadding,
     this.language,
     this.desiredAccuracy,
+    this.svgPicture,
   }) : super(key: key);
 
   final String apiKey;
@@ -60,6 +61,7 @@ class MapPicker extends StatefulWidget {
   final Alignment resultCardAlignment;
   final Decoration resultCardDecoration;
   final EdgeInsets resultCardPadding;
+  final String svgPicture;
 
   final String language;
 
@@ -203,6 +205,7 @@ class MapPickerState extends State<MapPicker> {
             layersButtonEnabled: widget.layersButtonEnabled,
             onToggleMapTypePressed: _onToggleMapTypePressed,
             onMyLocationPressed: _initCurrentLocation,
+            svgPicture: widget.svgPicture,
           ),
           pin(),
           locationCard(),
@@ -455,12 +458,13 @@ class _MapFabs extends StatelessWidget {
     @required this.layersButtonEnabled,
     @required this.onToggleMapTypePressed,
     @required this.onMyLocationPressed,
+    @required this.svgPicture,
   })  : assert(onToggleMapTypePressed != null),
         super(key: key);
 
   final bool myLocationButtonEnabled;
   final bool layersButtonEnabled;
-
+  final String svgPicture;
   final VoidCallback onToggleMapTypePressed;
   final VoidCallback onMyLocationPressed;
 
@@ -495,7 +499,7 @@ class _MapFabs extends StatelessWidget {
                   height: 36,
                   child: IconButton(
                     icon: SvgPicture.asset(
-                      'art/location.svg',
+                      svgPicture,
                       color: Color(0xFFFF5E20),
                     ),
                     onPressed: onMyLocationPressed,
