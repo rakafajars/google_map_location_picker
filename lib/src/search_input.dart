@@ -66,9 +66,8 @@ class SearchInputState extends State<SearchInput> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(
-        right: 24,
-      ),
+      width: MediaQuery.of(context).size.width,
+      height: 36,
       decoration: new BoxDecoration(
         color: Theme.of(context).brightness == Brightness.dark
             ? Colors.black54

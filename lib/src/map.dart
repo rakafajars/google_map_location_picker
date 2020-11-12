@@ -305,24 +305,10 @@ class MapPickerState extends State<MapPicker> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Icon(Icons.place),
-            Container(
-              decoration: ShapeDecoration(
-                shadows: [
-                  BoxShadow(
-                    blurRadius: 4,
-                    color: Colors.red,
-                  ),
-                ],
-                shape: CircleBorder(
-                  side: BorderSide(
-                    width: 4,
-                    color: Colors.transparent,
-                  ),
-                ),
-              ),
+            Icon(
+              Icons.place,
+              color: Colors.red,
             ),
-            SizedBox(height: 56),
           ],
         ),
       ),
