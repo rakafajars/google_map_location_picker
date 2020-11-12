@@ -41,6 +41,7 @@ class LocationPicker extends StatefulWidget {
     this.language,
     this.desiredAccuracy,
     this.svgPicture,
+    this.hintStyle,
   });
 
   final String apiKey;
@@ -64,6 +65,7 @@ class LocationPicker extends StatefulWidget {
   final Decoration resultCardDecoration;
   final EdgeInsets resultCardPadding;
   final Widget svgPicture;
+  final TextStyle hintStyle;
 
   final String language;
 
@@ -402,6 +404,7 @@ class LocationPickerState extends State<LocationPicker> {
               key: searchInputKey,
               boxDecoration: widget.searchBarBoxDecoration,
               hintText: widget.hintText,
+              hintStyle: widget.hintStyle,
             ),
           ),
           body: MapPicker(
