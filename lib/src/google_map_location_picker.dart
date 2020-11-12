@@ -63,7 +63,7 @@ class LocationPicker extends StatefulWidget {
   final Alignment resultCardAlignment;
   final Decoration resultCardDecoration;
   final EdgeInsets resultCardPadding;
-  final String svgPicture;
+  final Widget svgPicture;
 
   final String language;
 
@@ -461,7 +461,7 @@ Future<LocationResult> showLocationPicker(
   Decoration resultCardDecoration,
   String language = 'en',
   LocationAccuracy desiredAccuracy = LocationAccuracy.best,
-  String svgPicture,
+  Widget svgPicture,
 }) async {
   final results = await Navigator.of(context).push(
     MaterialPageRoute<dynamic>(

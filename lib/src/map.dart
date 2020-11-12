@@ -61,7 +61,7 @@ class MapPicker extends StatefulWidget {
   final Alignment resultCardAlignment;
   final Decoration resultCardDecoration;
   final EdgeInsets resultCardPadding;
-  final String svgPicture;
+  final Widget svgPicture;
 
   final String language;
 
@@ -464,7 +464,7 @@ class _MapFabs extends StatelessWidget {
 
   final bool myLocationButtonEnabled;
   final bool layersButtonEnabled;
-  final String svgPicture;
+  final Widget svgPicture;
   final VoidCallback onToggleMapTypePressed;
   final VoidCallback onMyLocationPressed;
 
@@ -498,10 +498,7 @@ class _MapFabs extends StatelessWidget {
                   width: 36,
                   height: 36,
                   child: IconButton(
-                    icon: SvgPicture.asset(
-                      svgPicture,
-                      color: Color(0xFFFF5E20),
-                    ),
+                    icon: svgPicture,
                     onPressed: onMyLocationPressed,
                   ),
                 ),
